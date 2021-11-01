@@ -7,6 +7,8 @@ defmodule MuseWeb.Router do
 
   scope "/api", MuseWeb do
     pipe_through :api
+
+    get "/", MusicController, :index
   end
 
   # Enables LiveDashboard only for development
