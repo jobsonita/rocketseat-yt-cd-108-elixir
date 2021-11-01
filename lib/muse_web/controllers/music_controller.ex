@@ -4,6 +4,6 @@ defmodule MuseWeb.MusicController do
   def index(conn, _params) do
     conn
     |> put_status(:ok)
-    |> text("Welcome to the api!")
+    |> json(%{title: "In the End", artist: "Linkin Park", album: "Hybrid Theory"})
   end
 end
