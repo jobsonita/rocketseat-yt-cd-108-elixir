@@ -4,7 +4,7 @@ defmodule MuseWeb.MusicController do
   alias Muse.Music
 
   def index(conn, _params) do
-    "ok"
+    "error"
     |> Music.create()
     |> handle_response(conn)
   end
@@ -13,5 +13,11 @@ defmodule MuseWeb.MusicController do
     conn
     |> put_status(:ok)
     |> render("create.json", music: music)
+  end
+
+  defp handle_response({:error, message}, conn) do
+    conn
+    |> put_status(:bad_request)
+    |> json(%{message: message})
   end
 end
