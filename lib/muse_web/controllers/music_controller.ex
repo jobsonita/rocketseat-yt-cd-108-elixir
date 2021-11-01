@@ -3,8 +3,8 @@ defmodule MuseWeb.MusicController do
 
   alias Muse.Music
 
-  def index(conn, _params) do
-    "error"
+  def index(conn, %{"state" => state}) do
+    state
     |> Music.create()
     |> handle_response(conn)
   end
