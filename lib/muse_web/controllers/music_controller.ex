@@ -1,9 +1,17 @@
 defmodule MuseWeb.MusicController do
   use MuseWeb, :controller
 
+  alias Muse.Music
+
   def index(conn, _params) do
+    "ok"
+    |> Music.create()
+    |> handle_response(conn)
+  end
+
+  defp handle_response({:ok, music}, conn) do
     conn
     |> put_status(:ok)
-    |> json(%{title: "In the End", artist: "Linkin Park", album: "Hybrid Theory"})
+    |> render("create.json", music: music)
   end
 end
